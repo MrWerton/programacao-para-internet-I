@@ -5,52 +5,49 @@ from question03 import getTwentyBeforeAndAfterChar
 import click
 
 
-@click.group()
-def main():
-    pass
+while True:
+    question = input(
+        """
+          1 - get all the links from web page
+          2 - get content inside tag
+          3 - get the 20 before and after char in of a determinate word
+        """)
+    if question == '-1':
+        break
+    elif question == '1':
+        url = input("insert a url: ")
 
-
-@main.command()
-@click.option("--url", prompt="## insert a url: ", type=str)
-def getUrls(url):
-    if (UrlValidator(url)):
-        result = getHrefs(url=url)
-        for content in result:
-            click.echo("link: {}".format(content))
-    else:
-        click.echo("url {} inserted not is valid".format(url))
-
-
-@main.command()
-@click.option("--url", prompt=" insert a url", type=str)
-@click.option("--tag", prompt=" insert a tag", type=str)
-def getContentInsideTag(url, tag):
-    if (UrlValidator(url)):
-        result = getContentInsideOfATag(url=url, tag=tag)
-        for content in result:
-            click.echo(
-                "tag - {tag} && content - {content}".format(tag=tag, content=content))
-    else:
-        click.echo("url {} inserted not is valid".format(url))
-
-
-@main.command()
-@click.option("--url", prompt=" insert a url", type=str)
-@click.option("--word", prompt=" insert a word", type=str)
-def getTwentyBeforeAndAfterOfChar(url, word):
-    if (UrlValidator(url)):
-        result = getTwentyBeforeAndAfterChar(url=url, word=word)
-        if (result):
-            before = result[0]
-            after = result[1]
-            click.echo(
-                "before - {before} && after - {after}".format(before=before, after=after))
+        if (UrlValidator(url)):
+            result = getHrefs(url=url)
+            for content in result:
+                print("link: {}".format(content))
         else:
-            click.echo("not found {} in text".format(word))
+            print("url {} inserted not is valid".format(url))
+    elif question == '2':
+        url = input("insert a url: ")
+        if (UrlValidator(url)):
+            tag = input("insert a tag: ")
+            result = getContentInsideOfATag(url=url, tag=tag)
+            for content in result:
+                print(
+                    "tag - {tag} && content - {content}".format(tag=tag, content=content))
+        else:
+            print("url {} inserted not is valid".format(url))
+    elif question == '3':
+        url = input("insert a url: ")
+        if (UrlValidator(url)):
+            word = input(
+                "insert a word for search the after and before char: ")
+            result = getTwentyBeforeAndAfterChar(url=url, word=word)
+            if (result):
+                before = result[0]
+                after = result[1]
+                click.echo(
+                    "before - {before} && after - {after}".format(before=before, after=after))
+            else:
+                print("not found {} in text".format(word))
+        else:
+            print("url {} inserted not is valid".format(url))
 
     else:
-        click.echo("url {} inserted not is valid".format(url))
-
-
-if __name__ == "__main__":
-    main()
+        print(f"Command not found")
