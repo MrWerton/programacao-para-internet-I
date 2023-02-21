@@ -27,8 +27,8 @@ class RegexDecorator:
         sensitivePattern = re.compile(word, re.IGNORECASE)
         result = re.search(sensitivePattern, document)
         if result:
-            before = document[(result.start() - 10):result.start()]
-            after = document[result.end():result.end() + 10]
+            before = document[(result.start() - 20):result.start()]
+            after = document[result.end():result.end() + 20]
             return [before, after]
         else:
             return None
