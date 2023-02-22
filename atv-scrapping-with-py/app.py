@@ -5,6 +5,7 @@ from question03 import getTwentyBeforeAndAfterChar
 from question04 import downloadImageFromUrl
 from question05 import searchInGoogle
 from question06 import getTable
+from question07 import getAddessByCep
 import click
 
 
@@ -17,7 +18,7 @@ while True:
           4 - download image from url
           5 - search term in google
           6 - get tables 
-          7 - get tables 
+          7 - get addess  
 
           0 - exit
         """)
@@ -78,5 +79,11 @@ while True:
             print(result)
         else:
             print("url {} inserted not is valid".format(url))
+    elif question == '7':
+        cep = input("insert a cep: ")
+
+        result = getAddessByCep(cep=cep)
+        print("addess: ", result)
+
     else:
         print(f"Command not found")
