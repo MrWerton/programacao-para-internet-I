@@ -32,3 +32,12 @@ class Regex:
             return [before, after]
         else:
             return None
+
+    @staticmethod
+    def getTable(document):
+        regex = r"(<table[^>]*>(?:.|\n)*(?=<\/table>))"
+        result = re.findall(regex, document)
+        if result:
+            return result
+        else:
+            return 'not found a tables'

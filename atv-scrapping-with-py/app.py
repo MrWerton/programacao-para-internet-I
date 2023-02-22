@@ -4,6 +4,7 @@ from question02 import getContentInsideOfATag
 from question03 import getTwentyBeforeAndAfterChar
 from question04 import downloadImageFromUrl
 from question05 import searchInGoogle
+from question06 import getTable
 import click
 
 
@@ -15,6 +16,8 @@ while True:
           3 - get the 20 before and after char in of a determinate word
           4 - download image from url
           5 - search term in google
+          6 - get tables 
+          7 - get tables 
 
           0 - exit
         """)
@@ -48,7 +51,7 @@ while True:
             if (result):
                 before = result[0]
                 after = result[1]
-                click.echo(
+                print(
                     "before - {before} && after - {after}".format(before=before, after=after))
             else:
                 print("not found {} in text".format(word))
@@ -67,7 +70,13 @@ while True:
         name = input(
             "insert a term of search in google: ")
         result = searchInGoogle(term=name)
-        print(result)
+    elif question == '6':
+        url = input("insert a url: ")
+        if (UrlValidator(url)):
 
+            result = getTable(url=url)
+            print(result)
+        else:
+            print("url {} inserted not is valid".format(url))
     else:
         print(f"Command not found")
