@@ -2,6 +2,8 @@ from urlValidator import UrlValidator
 from question01 import getHrefs
 from question02 import getContentInsideOfATag
 from question03 import getTwentyBeforeAndAfterChar
+from question04 import downloadImageFromUrl
+from question05 import searchInGoogle
 import click
 
 
@@ -11,8 +13,12 @@ while True:
           1 - get all the links from web page
           2 - get content inside tag
           3 - get the 20 before and after char in of a determinate word
+          4 - download image from url
+          5 - search term in google
+
+          0 - exit
         """)
-    if question == '-1':
+    if question == '0':
         break
     elif question == '1':
         url = input("insert a url: ")
@@ -48,6 +54,20 @@ while True:
                 print("not found {} in text".format(word))
         else:
             print("url {} inserted not is valid".format(url))
+    elif question == '4':
+        url = input("insert a url: ")
+        if (UrlValidator(url)):
+            name = input(
+                "insert a name of image: ")
+            downloadImageFromUrl(url=url, name=name)
+            print("image was downloaded with success")
+        else:
+            print("url {} inserted not is valid".format(url))
+    elif question == '5':
+        name = input(
+            "insert a term of search in google: ")
+        result = searchInGoogle(term=name)
+        print(result)
 
     else:
         print(f"Command not found")
