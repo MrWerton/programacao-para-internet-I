@@ -1,7 +1,7 @@
 import re
 
 
-class RegexDecorator:
+class Regex:
     @staticmethod
     def getHrefs(document: str):
         regex = r'href=[\'"]?([^\'" >]+)'

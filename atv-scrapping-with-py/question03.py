@@ -1,10 +1,10 @@
 import requests
-from regexDecorator import RegexDecorator
+from regex import Regex
 
 
 def getTwentyBeforeAndAfterChar(url: str, word: str):
     response = requests.get(url)
-    result = RegexDecorator.getTwentyBeforeAndAfterChar(
+    result = Regex.getTwentyBeforeAndAfterChar(
         document=response.text, word=word)
     return result
 

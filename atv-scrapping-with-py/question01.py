@@ -1,8 +1,8 @@
 import requests
-from regexDecorator import RegexDecorator
+from regex import Regex
 
 
 def getHrefs(url: str):
     response = requests.get(url)
-    result = RegexDecorator.getHrefs(document=response.text)
+    result = Regex.getHrefs(document=response.text)
     return result
